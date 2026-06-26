@@ -1,7 +1,7 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { addMinutes, differenceInCalendarDays, endOfToday, format, parseISO } from "date-fns";
-import { CircleAlertIcon, CircleCheckIcon, Clock3Icon, LoaderIcon, UserRound } from "lucide-react";
-
+import { CircleAlertIcon, CircleCheckIcon, Clock3Icon,  LoaderIcon, UserRound } from "lucide-react";
+import { Link } from "react-router";
 import { Badge } from "~/components/ui/badge";
 import { Checkbox } from "~/components/ui/checkbox";
 
@@ -48,21 +48,30 @@ export const recentCustomersColumns: ColumnDef<RecentCustomerRow>[] = [
   {
     accessorKey: "name",
     header: "Customer",
-    cell: ({ row }) => (
-      <div className="flex items-center gap-2">
-        <span className="flex size-8 items-center justify-center rounded-md border bg-muted">
-          <UserRound className="size-4 text-muted-foreground" />
-        </span>
-        <div className="min-w-0 flex-1">
-          <div className="flex items-end justify-between gap-3">
-            <div className="grid min-w-0 gap-0.5">
-              <span className="truncate font-medium text-sm leading-none">{row.original.name}</span>
-              <span className="truncate text-muted-foreground text-xs leading-none">#{row.original.id}</span>
-            </div>
-          </div>
+cell: ({ row }) => (
+  <Link
+    to={`/users/${row.original.id}`}
+    className="flex items-center gap-2 hover:opacity-80"
+  >
+    <span className="flex size-8 items-center justify-center rounded-md border bg-muted">
+      <UserRound className="size-4 text-muted-foreground" />
+    </span>
+
+    <div className="min-w-0 flex-1">
+      <div className="flex items-end justify-between gap-3">
+        <div className="grid min-w-0 gap-0.5">
+          <span className="truncate font-medium text-sm leading-none">
+            {row.original.name}
+          </span>
+          <span className="truncate text-muted-foreground text-xs leading-none">
+            #{row.original.id}
+          </span>
         </div>
       </div>
-    ),
+    </div>
+  </Link>
+
+),
     enableHiding: false,
   },
   {

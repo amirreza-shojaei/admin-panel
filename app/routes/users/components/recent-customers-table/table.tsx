@@ -53,7 +53,6 @@ import {
 
 import { recentCustomersColumns } from "./columns";
 import type { RecentCustomerRow } from "./schema";
-import { Link } from "react-router";
 const statusOptions = [
   { value: "all", label: "All" },
   { value: "Subscribed", label: "Subscribed" },
@@ -274,15 +273,10 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id} className="p-3 align-middle">
-                      <Link
-                        to={`/users/${cell.row.original.id}`}
-                        className="block w-full h-full"
-                      >
-                        {flexRender(
+                      {flexRender(
                           cell.column.columnDef.cell,
                           cell.getContext(),
                         )}
-                      </Link>
                     </TableCell>
                   ))}
                 </TableRow>

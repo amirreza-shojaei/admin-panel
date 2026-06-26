@@ -4,7 +4,7 @@ import { Header } from "~/components/pagesHeader";
 import { ProfileBreadcrumb } from "~/components/pagesBreadCrumb";
 import { Button } from "~/components/ui/button";
 import { Menu } from "lucide-react";
-import userData from "./data.json";
+import userData from "../components/data.json";
 import {User,Key} from"lucide-react";
 import { PageSidebar } from "~/components/pagesSidebar";
 
