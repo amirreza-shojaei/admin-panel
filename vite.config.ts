@@ -7,4 +7,14 @@ export default defineConfig({
   resolve: {
     tsconfigPaths: true,
   },
+  // بخش سرور و پروکسی را اینجا اضافه کنید:
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 });

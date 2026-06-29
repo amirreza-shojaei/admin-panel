@@ -6,8 +6,11 @@ import {
 import customersData from "./data.json";
 import type { RecentCustomerRow } from "./recent-customers-table/schema";
 import { RecentCustomersTable } from "./recent-customers-table/table";
+import { findAllUsers } from "~/api/services/usersApi";
 
-const customers = customersData as RecentCustomerRow[];
+
+const users = await findAllUsers();
+const customers = users as RecentCustomerRow[];
 
 export function SubscriberOverview() {
   return (

@@ -7,21 +7,6 @@ import { Checkbox } from "~/components/ui/checkbox";
 
 import type { RecentCustomerRow } from "./schema";
 
-function billingIcon(billing: string) {
-  switch (billing) {
-    case "Paid":
-      return <CircleCheckIcon className="fill-green-500 stroke-primary-foreground dark:fill-green-600" />;
-    case "Pending":
-      return <LoaderIcon />;
-    case "Overdue":
-      return <CircleAlertIcon className="text-amber-600 dark:text-amber-500" />;
-    case "Trial":
-      return <Clock3Icon className="text-muted-foreground" />;
-    default:
-      return null;
-  }
-}
-
 export const recentCustomersColumns: ColumnDef<RecentCustomerRow>[] = [
   {
     id: "select",
@@ -112,8 +97,7 @@ cell: ({ row }) => (
     header: "Joined",
     cell: ({ row }) => {
       const baseDate = parseISO(row.original.joined);
-      const joinedAt = addMinutes(baseDate, 9 * 60 + (Number(row.original.id) % 12) * 17);
-
+      const joinedAt = addMinutes(baseDate, 9 * 60);
       return (
         <div className="grid gap-0.5">
           <span className="text-sm">{format(joinedAt, "do MMMM yyyy")}</span>
@@ -127,7 +111,7 @@ cell: ({ row }) => (
     header: "Update",
     cell: ({ row }) => {
       const baseDate = parseISO(row.original.update);
-      const joinedAt = addMinutes(baseDate, 9 * 60 + (Number(row.original.id) % 12) * 17);
+     const joinedAt = addMinutes(baseDate, 9 * 60);
       return (
         <div className="grid gap-0.5">
           <span className="text-sm">{format(joinedAt, "do MMMM yyyy")}</span>

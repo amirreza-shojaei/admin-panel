@@ -6,7 +6,6 @@ export const recentCustomersSchema = z.object({
   email: z.string(),
   role: z.string(),
   status: z.string(),
-  billing: z.string(),
   joined: z.string(),
   update:z.string()
 });

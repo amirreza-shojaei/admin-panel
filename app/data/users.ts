@@ -53,5 +53,4 @@ export const permissions =[
     accesses:["edit order","add order","delete order"]
   }
 ]
-
 export const rootUser = users[0];
