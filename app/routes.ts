@@ -19,11 +19,12 @@ export default [
       route("productivity", "routes/dashboard/productivity/index.tsx"),
     ]),
 
-    ...prefix("users", [index("routes/users/index.tsx")]),
-
-    route("users/:id", "routes/users/pages/details.tsx", [
-      route("profile", "routes/users/pages/profile.tsx"),
-      route("access", "routes/users/pages/access.tsx"),
+    ...prefix("users", [
+      index("routes/users/index.tsx"),
+      route("/:id", "routes/users/pages/details.tsx", [
+        route("profile", "routes/users/pages/profile.tsx"),
+        route("access", "routes/users/pages/access.tsx"),
+      ]),
     ]),
 
     ...prefix("settings", [index("routes/settings/index.tsx")]),
@@ -32,16 +33,23 @@ export default [
       route("account", "routes/profile/pages/account.tsx"),
       route("password", "routes/profile/pages/password.tsx"),
     ]),
+
+    
     route("access", "routes/accessManager/index.tsx", [
       route("rolemanager", "routes/accessManager/pages/roleManager.tsx", [
         route("addrole", "routes/accessManager/components/addRole.tsx"),
-        route (":id","routes/accessManager/components/editRole.tsx")
+        route(":id", "routes/accessManager/components/editRole.tsx"),
       ]),
-      route("permissionsmanager", "routes/accessManager/pages/permissionsManage.tsx",[
-          route("addpermission", "routes/accessManager/components/addPermission.tsx"),
-          route (":id","routes/accessManager/components/editPermission.tsx")
-        ]
-        
+      route(
+        "permissionsmanager",
+        "routes/accessManager/pages/permissionsManage.tsx",
+        [
+          route(
+            "addpermission",
+            "routes/accessManager/components/addPermission.tsx",
+          ),
+          route(":id", "routes/accessManager/components/editPermission.tsx"),
+        ],
       ),
       route(
         "websitepermissions",

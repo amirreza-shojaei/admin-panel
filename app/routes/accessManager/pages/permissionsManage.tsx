@@ -49,7 +49,7 @@ export default function PermissionsManage() {
                   <div className="space-y-2 pl-2 pt-2">
                     {group.accesses.map((perm) => (
                       <div key={perm} className="flex items-center space-x-2">
-                        <Checkbox id={perm} />
+                        <Checkbox id={perm} checked />
                         <Label
                           htmlFor={perm}
                           className="text-sm font-normal cursor-pointer"
